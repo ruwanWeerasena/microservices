@@ -1,19 +1,19 @@
-﻿using Ordering.Domain.Common;
+﻿using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ordering.Domain.Entities;
+namespace Ordering.Application.Features.Orders.Commands.CheckoutOrder;
 
-public class Order : EntityBase
+public class CheckoutOrderCommand : IRequest<int>
 {
     public string UserName { get; set; }
     public decimal TotalPrice { get; set; }
 
     //BillingAddess
-    public string FirstName { get; set; }
+    public string FistName { get; set; }
     public string LastName { get; set; }
     public string EmailAddress { get; set; }
     public string AddressLine { get; set; }
@@ -27,4 +27,9 @@ public class Order : EntityBase
     public string Expiration { get; set; }
     public string CVV { get; set; }
     public int PaymentMethod { get; set; }
+
+    public CheckoutOrderCommand()
+    {
+        
+    }
 }

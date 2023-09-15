@@ -1,3 +1,8 @@
+using Ordering.API.Extensions;
+using Ordering.Application;
+using Ordering.Infrastructure;
+using Ordering.Infrastructure.Persistence;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,8 +12,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices(builder.Configuration);
 var app = builder.Build();
-
+app.MigrateDatabase<OrderContext>(async(context, services) =>
+{
+    var logger = services.GetRequiredService<ILogger<OrderContextSeed>>();
+    await OrderContextSeed.SeedAsync(context, logger);
+});
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
