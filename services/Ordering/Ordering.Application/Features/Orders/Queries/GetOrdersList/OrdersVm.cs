@@ -13,7 +13,7 @@ public class OrdersVm
     public decimal TotalPrice { get; set; }
 
     //BillingAddess
-    public string FistName { get; set; }
+    public string FirstName { get; set; }
     public string LastName { get; set; }
     public string EmailAddress { get; set; }
     public string AddressLine { get; set; }
