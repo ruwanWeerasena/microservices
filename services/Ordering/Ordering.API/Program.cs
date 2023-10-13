@@ -1,3 +1,7 @@
+using EventBus.Messages.Common;
+using EventBus.Messages.Events;
+using MassTransit;
+using Ordering.API.EventBusConsumer;
 using Ordering.API.Extensions;
 using Ordering.Application;
 using Ordering.Infrastructure;
@@ -14,6 +18,26 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
+
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<BasketCheckoutConsumer>();
+//this is the events consumer side
+builder.Services.AddMassTransit(config =>
+{
+    config.AddConsumer<BasketCheckoutConsumer>();
+    config.UsingRabbitMq((ctx, cfg) => {
+
+        //       protocol://username:password@sever:port
+        cfg.Host(builder.Configuration["EventBusSettings:HostAddress"]);
+
+        //to make the recieve endpoint
+        cfg.ReceiveEndpoint(EventBusConstants.BasketCheckoutQueue, c =>
+        {
+            c.ConfigureConsumer<BasketCheckoutConsumer>(ctx);
+        });
+    });
+});
+
 var app = builder.Build();
 app.MigrateDatabase<OrderContext>((context, services) =>
 {

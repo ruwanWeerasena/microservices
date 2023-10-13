@@ -9,11 +9,6 @@
 		<DockerComposeProjectPath>..\..\..\docker-compose.dcproj</DockerComposeProjectPath>
 	</PropertyGroup>
 
-
-	<ItemGroup>
-		<Protobuf Include="Protos\discount.proto" GrpcServices="Client" />
-	</ItemGroup>
-
 	<ItemGroup>
 		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
 		<PackageReference Include="MassTransit" Version="8.1.0" />
@@ -27,6 +22,16 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\BuildingBlocks\EventBus.Messages\EventBus.Messages.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Protos\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Protobuf Include="..\..\discount\discount.grpc\Protos\discount.proto" GrpcServices="Client">
+	    <Link>Protos\discount.proto</Link>
+	  </Protobuf>
 	</ItemGroup>
 
 </Project>
