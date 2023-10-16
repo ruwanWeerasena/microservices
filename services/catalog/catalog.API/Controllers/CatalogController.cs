@@ -18,7 +18,7 @@ public class CatalogController : ControllerBase
     
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<IEnumerable<Product>>> GetProductByCategory()
+    public async Task<ActionResult<IEnumerable<Product>>> GetAll()
     {
         var products = await _productRepository.GetProducts();
         return Ok(products);
