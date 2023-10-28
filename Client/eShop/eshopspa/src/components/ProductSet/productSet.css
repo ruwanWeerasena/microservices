@@ -1,0 +1,18 @@
+.lastproductscontainer{
+    display: flex;
+    flex-direction: column;
+}
+.lastproductssheader{
+    background-color: #03a9f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    height: 40px;
+}
+.lastproductssbody{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* gap: 20px; */
+}

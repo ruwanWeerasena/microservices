@@ -1,0 +1,68 @@
+.imgcarousal{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-grow: 0.5; */
+    max-width: 700px;
+    max-height: 350px;
+}
+.imgslide{
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 7px #666;
+    height: 100%;
+    width: 100%;
+}
+.imgslide-hidden{
+    display: none;
+}
+.arrowbackcarousal{
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    left: 1rem;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 5px #ffffff);
+}
+.arrowforwardcarousal{
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    right: 1rem;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 5px #ffffff);
+}
+.carousalindicators{
+    display: flex;
+    position: absolute;
+    bottom: 1rem;
+}
+.carousalindicator{
+    background-color: white;
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 100%;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 5px #555;
+    margin: 0 0.2rem;
+    cursor: pointer;
+}
+.carousalindicator-selected{
+    background-color: rgb(82, 82, 82);
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 100%;
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 5px #555;
+    margin: 0 0.2rem;
+    cursor: pointer;
+}
+
+@media (max-width: 650px) {
+    .imgcarousal{
+        max-width: 100%;
+    }
+ 
+}

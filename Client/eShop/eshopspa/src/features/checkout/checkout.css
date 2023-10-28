@@ -1,0 +1,76 @@
+#checkoutpage{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+.checkoutpageheader{
+    padding: 10px;
+    border-radius: 10px;
+    font-size: larger;
+    background-color: rgb(200, 201, 201);
+}
+.checkoutpagebody{
+    display: flex;
+    gap: 10px;
+}
+.checkoutpageformsection{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.checkoutpageform{
+    display: flex;
+}
+.checkoutpagecart{
+    display: flex;
+    flex-direction: column;
+}
+.checkoutpagecartcard{
+    border: 1px solid gray;
+    border-radius: 5px;
+    border-bottom: none;
+}
+.checkoutpagecartcardpromo{
+    display: flex;
+    margin-top: 5px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+.checkoutpagecartcarditem{
+    padding: 5px;
+    border-bottom: 1px solid gray;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+.checkoutformerrors{
+    color: red;
+}
+
+@media (max-width: 340px) {
+    .twoinputstogethersection {
+        display: flex;
+        flex-direction: column;
+    }
+    .checkoutpagebody{
+        display: flex;
+        flex-direction: column-reverse;
+
+    }
+    .formselectsection{
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+@media (max-width: 150px) {
+  
+    .checkoutpagecartcarditem{
+        flex-direction: column;
+    }
+
+}

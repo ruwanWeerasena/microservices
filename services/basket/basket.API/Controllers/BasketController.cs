@@ -43,7 +43,7 @@ public class BasketController : ControllerBase
         {
             var coupon = await _discountGrpcService.GetDiscount(item.ProductName);
 
-            item.Price -= coupon.Amount;
+            item.DiscountedPrice = item.Price - coupon.Amount;
         }
 
         return Ok( await _basketRepository.UpdateBasket(basket));

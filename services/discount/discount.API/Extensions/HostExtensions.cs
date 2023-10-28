@@ -40,7 +40,7 @@ namespace discount.API.Extensions
                         command.CommandText = @"Insert into Coupon (ProductName,Description,Amount) values ('IPhone X','IPhone Discount',5000)";
                         command.ExecuteNonQuery();
 
-                        command.CommandText = @"Insert into Coupon (ProductName,Description,Amount) values ('Samsung 10','Samsung Discount',8000)";
+                        command.CommandText = @"Insert into Coupon (ProductName,Description,Amount) values ('Samsung A32','Samsung Discount',8000)";
                         command.ExecuteNonQuery();
 
                         logger.LogInformation("Migrated Postgres database");

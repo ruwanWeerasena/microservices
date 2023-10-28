@@ -1,0 +1,16 @@
+.App{
+    min-height: 100vh;
+   
+}
+.container{
+    min-height: 69.4vh;
+    margin: 10px 5% 2px 5%;
+}
+
+@media (max-width: 300px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+        margin: 0px
+    }
+}

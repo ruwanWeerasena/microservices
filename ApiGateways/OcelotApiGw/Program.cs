@@ -4,7 +4,7 @@ using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.Services.AddCors();
 
 builder.Configuration.AddJsonFile($"ocelot.{builder.Environment.EnvironmentName}.json",true,true);
 builder.Logging.AddConfiguration(builder.Configuration.GetSection("Logging")).AddConsole().AddDebug();
@@ -17,6 +17,7 @@ builder.Services.AddOcelot().AddCacheManager(settings =>
 
 
 var app = builder.Build();
+app.UseCors(c=>c.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
 await app.UseOcelot();
 

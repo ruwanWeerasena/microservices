@@ -22,15 +22,18 @@ builder.Services.AddHttpClient<IOrderService, OrderService>(c =>
 {
     c.BaseAddress = new Uri(builder.Configuration["ApiSettings:OrderingUrl"]);
 });
+builder.Services.AddCors();
 
 var app = builder.Build();
 
+app.UseCors(c=>c.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseAuthorization();
 

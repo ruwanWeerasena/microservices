@@ -1,0 +1,20 @@
+
+.homeupper{
+    display: flex;
+    justify-content: center;
+}
+
+
+@media (max-width: 650px) {
+    .homeupper{
+       flex-direction: column;
+       width: 100%;
+       align-items: center;
+       gap: 10px;
+    }
+ 
+}
+
+
+    
+ 
