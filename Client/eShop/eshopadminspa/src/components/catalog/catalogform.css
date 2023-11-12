@@ -1,0 +1,23 @@
+.catalogformsection{
+    display: flex;
+    flex-direction: column;
+}
+.catalogform{
+    display: flex;
+    flex-direction: column;
+}
+.twoinputstogethersection{
+    display: flex;
+    gap: 10px;
+}
+.catalogformerrors{
+    color: red;
+}
+
+@media (max-width: 350px) {
+    .twoinputstogethersection{
+        display: flex;
+        flex-direction: column;
+       
+    }
+}

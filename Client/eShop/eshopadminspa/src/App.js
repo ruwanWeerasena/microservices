@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import { createContext } from 'react';
-import { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useState,useEffect } from 'react';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import Catalog from './features/catalog/Catalog';
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
@@ -24,12 +24,42 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { Analytics, DarkMode, Discount, Inventory, ViewList } from '@mui/icons-material';
+import { Analytics, DarkMode, Discount as DiscountIcon, Inventory, ViewList } from '@mui/icons-material';
 import Overview from './features/overview/Overview';
+import axios from 'axios';
+import DiscountsOverview from './components/discount/DiscountsOverview';
+import Discount from './features/discount/Discount';
+import Orders from './features/orders/Orders';
 
 const ProductsContext = createContext();
+
 function App() {
 
+  const navigate = useNavigate();
+  const [products,setProducts] = useState([])
+  const [discounts,setDiscounts] = useState([])
+  const [orders,setOrders] = useState([]);
+
+  const fetchOrders = async()=>{
+    await axios.get(`http://localhost:8004/api/v1/order`).then(res=>{setOrders(res.data)})
+  }
+  const fetchCatalog = async()=>{
+    await axios.get(`http://localhost:8000/api/v1/catalog`).then(res=>{setProducts(res.data)})
+  }
+  const fetchDiscounts = async()=>{
+    await axios.get(`http://localhost:8002/api/v1/discount`).then(res=>{setDiscounts(res.data)})
+  }
+  
+
+  useEffect(()=>{
+    fetchOrders()
+    fetchCatalog()
+    fetchDiscounts()
+  },[])
+
+
+
+  // things related to nav
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -40,17 +70,8 @@ function App() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const [products,setProducts] = useState([])
-  const [cart,setCart] = useState({
-    userName:"",
-    items:[],
-    totalPrice:0,
-    count:0
-  })
-  const [orders,setOrders] = useState([]);
-  // 
   return (
-    <ProductsContext.Provider value={{products,setProducts,cart,setCart,orders,setOrders}}>
+    <ProductsContext.Provider value={{products,setProducts,discounts,setDiscounts,orders,setOrders}}>
       <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar sx={{backgroundColor:'#1b1b1b'}}   position="fixed" open={open}>
@@ -87,6 +108,7 @@ function App() {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
+                onClick={()=>navigate('/')}
               >
                 <ListItemIcon
                   sx={{
@@ -97,7 +119,7 @@ function App() {
                 >
                   <Analytics />
                 </ListItemIcon>
-                <ListItemText primary={"Mail"} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={"Overview"} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           
@@ -105,9 +127,6 @@ function App() {
         </List>
         <Divider />
         <List>
-         
-            
-
             <ListItem disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
@@ -115,6 +134,7 @@ function App() {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
+                onClick={()=>navigate('/catalog')}
               >
                 <ListItemIcon
                   sx={{
@@ -136,6 +156,7 @@ function App() {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
+                onClick={()=>navigate('/discount')}
               >
                 <ListItemIcon
                   sx={{
@@ -144,7 +165,7 @@ function App() {
                     justifyContent: 'center',
                   }}
                 >
-                 <Discount />
+                 <DiscountIcon />
                 </ListItemIcon>
                 <ListItemText primary={"Discounts"} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -157,6 +178,7 @@ function App() {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
+                onClick={()=>navigate('/orders')}
               >
                 <ListItemIcon
                   sx={{
@@ -177,12 +199,15 @@ function App() {
         
         <DrawerHeader/>
         
-        <BrowserRouter>
+        
             
               <Routes>
                   <Route path="/" element={<Overview/>}/>
+                  <Route path="/catalog" element={<Catalog/>}/>
+                  <Route path="/discount" element={<Discount/>}/>
+                  <Route path="/orders" element={<Orders/>}/>
               </Routes>
-        </BrowserRouter>
+        
         
       </Box>
     </Box>
@@ -256,4 +281,23 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
+export const createProduct = async(product,setProducts)=>{
+   axios.post(`http://localhost:8000/api/v1/catalog`,product).then(res=>{setProducts(c=>{return[...c,res.data]})})
+}
+export const deleteProduct = async(productId,setProducts)=>{
+  axios.delete(`http://localhost:8000/api/v1/catalog/${productId}`).then(res=>{setProducts(c=>c.filter(p=>p.id!==productId))
+})}
+export const updateProduct = async(product,setProducts)=>{
+  axios.put(`http://localhost:8000/api/v1/catalog`,product).then(res=>{setProducts(c=>{
+    const filtered = c.filter((p)=>p.id!==product.id)
+    return[...filtered,product]
+  })})
+}
+export const createDiscount = async(discount,setDiscounts)=>{
+  axios.post(`http://localhost:8002/api/v1/discount`,discount).then(res=>{setDiscounts(c=>{return[...c,res.data]})})
+}
+export const deleteDiscount = async(productName,setDiscounts)=>{
+  axios.delete(`http://localhost:8002/api/v1/discount/${productName}`).then(res=>{setDiscounts(c=>c.filter((d)=>d.productName!==productName))})
+}
 export default App;
+export {ProductsContext}

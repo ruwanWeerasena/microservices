@@ -6,8 +6,7 @@
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0px 0px 25px #7b7b7b;
-    max-width: 250px;
-    /* max-height: 300px; */
+    width: 250px;
 }
 .productcardimg{
     display: flex;

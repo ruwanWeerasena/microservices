@@ -17,6 +17,12 @@ public class OrderRepository : RepositoryBase<Order>, IOrderRepository
     {
     }
 
+    public async Task<IEnumerable<Order>> GetAllOrder()
+    {
+        var orderList = await _orderContext.Orders.ToListAsync();
+        return orderList;
+    }
+
     public async Task<IEnumerable<Order>> GetOrderByUserName(string userName)
     {
         var orderList = await _orderContext.Orders.Where(o => o.UserName == userName).ToListAsync();

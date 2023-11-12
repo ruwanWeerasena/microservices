@@ -21,6 +21,7 @@ builder.Services.AddInfrastructureServices(builder.Configuration);
 
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped<BasketCheckoutConsumer>();
+builder.Services.AddCors();
 //this is the events consumer side
 builder.Services.AddMassTransit(config =>
 {
@@ -39,6 +40,7 @@ builder.Services.AddMassTransit(config =>
 });
 
 var app = builder.Build();
+app.UseCors(b=>b.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 app.MigrateDatabase<OrderContext>((context, services) =>
 {
     var logger = services.GetRequiredService<ILogger<OrderContextSeed>>();

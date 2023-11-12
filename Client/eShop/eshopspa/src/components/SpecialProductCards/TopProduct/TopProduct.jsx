@@ -12,7 +12,7 @@ const TopProduct = ({product}) => {
               <span style={{fontWeight:'bolder',color:'white', fontFamily:'sans-serif'}}>TOP PRODUCTS</span>
           </div>
           <div className='topproductcontainerbody'>
-              <img style={{maxWidth:'80%'}} src={`/images/phones/${product.imageFile}`} alt='topphone'/>
+              <img  width={200} height={150}style={{maxWidth:'80%'}} src={product.imageFile} alt='topphone'/>
               <div style={{fontFamily:'sans-serif', fontSize:"x-large",fontWeight:"bolder", color:'rgb(0, 76, 239)'}}>{product.name}</div>
           </div>
           <div className='topproductcontainerbuttons'>

@@ -1,5 +1,18 @@
 .overview{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-around;
+}
+.overviewtop{
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+    text-align: center;
+}
+@media (max-width: 800px) {
+    .overviewtop{
+        flex-direction: column;
+        gap: 10px;
+    }
 }

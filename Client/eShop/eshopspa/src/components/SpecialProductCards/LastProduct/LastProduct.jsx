@@ -11,7 +11,7 @@ export const LastProduct = ({product}) => {
           </div>
 
           <div className='lastproductcontainerbody'>
-              <img style={{maxWidth:'60%'}} src={`/images/phones/${product.imageFile}`}alt='lastphone'/>
+              <img width={200}  style={{maxWidth:'60%'}} src={product.imageFile}alt='lastphone'/>
               <div style={{fontFamily:'sans-serif', fontSize:"x-large",fontWeight:"bolder", color:'rgb(0, 76, 239)'}}>{product.name}</div>
               <div style={{fontFamily:'sans-serif', fontSize:"small",fontWeight:"bold" }}>{product.description}</div>
           </div>

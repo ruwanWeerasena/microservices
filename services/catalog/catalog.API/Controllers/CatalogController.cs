@@ -56,6 +56,10 @@ public class CatalogController : ControllerBase
     [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
     public async Task<IActionResult> UpdateProduct([FromBody] Product product)
     {
+        if(product.Id is null)
+        {
+            return BadRequest();
+        }
         return Ok(await  _productRepository.updateProduct(product));
     }
 

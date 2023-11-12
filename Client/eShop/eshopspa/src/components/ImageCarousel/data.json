@@ -1,23 +1,23 @@
 {
     "slides":[
         {
-            "src":"http://localhost:3000/images/slider1.jpg",
+            "src":"images/slider1.jpg",
             "alt":"Image 1 for carousal"
         },
         {
-            "src":"http://localhost:3000/images/slider2.jpg",
+            "src":"images/slider2.jpg",
             "alt":"Image 2 for carousal"
         },
         {
-            "src":"http://localhost:3000/images/slider3.jpg",
+            "src":"images/slider3.jpg",
             "alt":"Image 3 for carousal"
         },
         {
-            "src":"http://localhost:3000/images/slider4.jpg",
+            "src":"images/slider4.jpg",
             "alt":"Image 4 for carousal"
         },
         {
-            "src":"http://localhost:3000/images/slider5.jpg",
+            "src":"images/slider5.jpg",
             "alt":"Image 5 for carousal"
         }
     ]

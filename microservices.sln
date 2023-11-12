@@ -43,6 +43,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.Aggregator", "ApiG
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{74F71F77-5D65-4D99-89A0-3BF0109BA2C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "catalog.API.Testing", "services\catalog\catalog.API.Testing\catalog.API.Testing.csproj", "{7C2F325D-E648-4698-8C37-E4AD74D3973D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{A611AC89-9EE9-4427-8871-EFE27D7B6D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A611AC89-9EE9-4427-8871-EFE27D7B6D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A611AC89-9EE9-4427-8871-EFE27D7B6D1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C2F325D-E648-4698-8C37-E4AD74D3973D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C2F325D-E648-4698-8C37-E4AD74D3973D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C2F325D-E648-4698-8C37-E4AD74D3973D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C2F325D-E648-4698-8C37-E4AD74D3973D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +123,7 @@ Global
 		{35EB7EF0-83EC-43B4-AD83-C2C5BB66116A} = {89C4CE82-53B2-4965-A4B2-3314F7E1A6EE}
 		{630A0E3C-DDBD-4E9B-9EEE-D575CA09AA9D} = {82C2D826-15C0-47F7-9355-8221CF513C27}
 		{A611AC89-9EE9-4427-8871-EFE27D7B6D1B} = {82C2D826-15C0-47F7-9355-8221CF513C27}
+		{7C2F325D-E648-4698-8C37-E4AD74D3973D} = {03D4974C-CD0C-4400-A431-479B29554A84}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ADC1E421-EF62-445E-B9E2-ACA60859D884}

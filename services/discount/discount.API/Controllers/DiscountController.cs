@@ -15,7 +15,14 @@ namespace discount.API.Controllers
         {
             _discountRepository = discountRepository;
         }
+        [HttpGet(Name = "GetAllDiscounts")]
+        [ProducesResponseType(typeof(Coupon), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<List<Coupon>>> GetAll()
+        {
+            var discounts = await _discountRepository.GetAllDiscounts();
+            return Ok(discounts);
 
+        }
         [HttpGet("{productName}" , Name = "GetDiscount")]
         [ProducesResponseType(typeof(Coupon), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Coupon>> Get(string productName)

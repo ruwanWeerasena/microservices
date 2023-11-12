@@ -19,6 +19,15 @@ public class OrderController : ControllerBase
         _mediator = mediator;
     }
 
+    [HttpGet( Name = "GetAll")]
+    [ProducesResponseType(typeof(IEnumerable<OrdersVm>), (int)HttpStatusCode.OK)]
+    public async Task<ActionResult<IEnumerable<OrdersVm>>> GetAll()
+    {
+        var query = new GetAllOrdersListQuery();
+        var orders = await _mediator.Send(query);
+        return Ok(orders);
+    }
+
     [HttpGet("{userName}", Name = "GetOrder")]
     [ProducesResponseType(typeof(IEnumerable<OrdersVm>), (int)HttpStatusCode.OK)]
     public async Task<ActionResult<IEnumerable<OrdersVm>>> GetOrdersByUserName(string userName)

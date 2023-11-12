@@ -15,10 +15,11 @@ public class ProductRepository : IProductRepository
     public async Task<IEnumerable<Product>> GetProducts()
     {
         return await _catelogContext.Products.Find(p=>true).ToListAsync();
+
     }
     public async Task<Product> GetProduct(string id)
     {
-        return await _catelogContext.Products.Find(p=>p.Id == id).FirstOrDefaultAsync();
+        return await _catelogContext.Products.FindAsync(p=>p.Id == id).Result.FirstOrDefaultAsync();
     }
     public async Task<IEnumerable<Product>> GetProductByName(string name)
     {

@@ -25,7 +25,7 @@ const ProductCard = ({product}) => {
     <div className='productcard'>
        
         <div className='productcardimg'>
-            <img style={{maxWidth:'60%'}} src={`/images/phones/${product.imageFile}`} alt='topphone'/>
+            <img width={200} height={150} style={{maxWidth:'60%'}} src={product.imageFile} alt='topphone'/>
         </div>
         <div className='productcardtitle'>
             {product.name}
